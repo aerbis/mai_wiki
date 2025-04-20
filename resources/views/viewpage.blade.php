@@ -158,6 +158,9 @@
 
                 <div class="row">
                     <div class="col-10">
+                        <div class="card text-white" style="backdrop-filter: blur(5px); background-color: rgb(0 0 0 / 50%); padding: 10px">
+                            {!! $page->text !!}
+                        </div>
                         <textarea id="sample">{{ $page->text }}</textarea>
                     </div>
                 </div>
@@ -291,6 +294,9 @@
         }
         ::-webkit-scrollbar {
             display: none;
+        }
+        img {
+            width: 850px;
         }
     </style>
 
