@@ -302,9 +302,7 @@
 
     <style> 
         body {
-            background-image: url('https://i.pinimg.com/originals/df/98/7c/df987cfa14bb2ecde827f3c69ae82046.jpg');
-            /* background-image: url('https://images.wallpaperscraft.com/image/single/universe_planet_circle_65146_1920x1080.jpg'); */
-            /* background-image: url('https://i.pinimg.com/736x/1c/96/7f/1c967f2ab4ead5f0ce003930b5cb9326.jpg'); */
+            background-image: url('https://avatars.mds.yandex.net/get-mpic/4407413/img_id3120010206446289579.jpeg/orig');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;

@@ -14,8 +14,12 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body style="background-image: url('https://avatars.mds.yandex.net/get-mpic/4407413/img_id3120010206446289579.jpeg/orig');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                margin: 0; ">
+        <div >
             @include('layouts.navigation')
 
             <!-- Page Heading -->
