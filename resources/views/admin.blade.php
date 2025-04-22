@@ -18,126 +18,57 @@
         <div class="container mt-3">
             <h2>Список пользователей</h2>
             <ul class="card text-white" style="backdrop-filter: blur(5px); background-color: rgb(0 0 0 / 50%); padding: 10px">
+                @foreach ($users as $user)
                 <li class="list-group-item">
                     <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>1. </span>Михаил Михайлович Мизайлов-Михайловко</div>
-                        <div class="col-lg-5 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio11" autocomplete="off" checked>
-                                    <label class="btn btn-outline-light" for="btnradio11">Читатель</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio21" autocomplete="off">
-                                    <label class="btn btn-outline-light" for="btnradio21">Редактор</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio31" autocomplete="off">
-                                    <label class="btn btn-outline-light" for="btnradio31">Админ</label>
-                                </div>
-                            </form>
+                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>{{ $loop->index + 1 }}. </span>{{ $user->name }}</div>
+                        <div class="col-lg-5 col-sm-12 mb-2 mt-2 text-end">  
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                @if (!is_null($user->role) && $user->role == 'reader')
+                                <form action="" class="btn btn-light" style="display: inline;">
+                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio11" autocomplete="off" checked>
+                                    <label for="btnradio11">Читатель</label>
+                                </form>
+                                @else
+                                <form action="" class="btn btn-outline-light" style="display: inline;">
+                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio11" autocomplete="off" checked>
+                                    <label for="btnradio11">Читатель</label>
+                                </form>
+                                @endif
+                            
+                                @if (!is_null($user->role) && $user->role == 'writer')
+                                <form action="" class="btn btn-light" style="display: inline;">
+                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio21" autocomplete="off">
+                                    <label for="btnradio21">Редактор</label>
+                                </form>
+                                @else
+                                <form action="" class="btn btn-outline-light" style="display: inline;">
+                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio21" autocomplete="off">
+                                    <label for="btnradio21">Редактор</label>
+                                </form>
+                                @endif
+                            
+                                @if (!is_null($user->role) && $user->role == 'admin')
+                                <form action="" class="btn btn-light" style="display: inline;">
+                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio31" autocomplete="off">
+                                    <label for="btnradio31">Админ</label>
+                                </form>
+                                @else
+                                <form action="" class="btn btn-outline-light" style="display: inline;">
+                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio31" autocomplete="off">
+                                    <label for="btnradio31">Админ</label>
+                                </form>
+                                @endif
+                            </div>    
                         </div>
                         <div class="col-lg-1 col-sm-12 mb-2 mt-2 text-end">
                             <form action="" style="display: inline;">
-                                <button type="button" class="btn btn-outline-danger">Удалить</button>
+                                <button type="submit" class="btn btn-outline-danger">Удалить</button>
                             </form>
                         </div>
                     </div>
                 </li>
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>2. </span>Михаил Михайлович Мизайлов-Михайловко</div>
-                        <div class="col-lg-5 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio12" autocomplete="off" checked>
-                                    <label class="btn btn btn-outline-light" for="btnradio12">Читатель</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio22" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio22">Редактор</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio32" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio32">Админ</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-1 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <button type="button" class="btn btn-outline-danger">Удалить</button>
-                            </form>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>3. </span>Михаил Михайлович Мизайлов-Михайловко</div>
-                        <div class="col-lg-5 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio13" autocomplete="off" checked>
-                                    <label class="btn btn btn-outline-light" for="btnradio13">Читатель</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio23" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio23">Редактор</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio33" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio33">Админ</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-1 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <button type="button" class="btn btn-outline-danger">Удалить</button>
-                            </form>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>4. </span>Михаил Михайлович Мизайлов-Михайловко</div>
-                        <div class="col-lg-5 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio14" autocomplete="off" checked>
-                                    <label class="btn btn btn-outline-light" for="btnradio14">Читатель</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio24" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio24">Редактор</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio34" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio4">Админ</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-1 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <button type="button" class="btn btn-outline-danger">Удалить</button>
-                            </form>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>5. </span>Михаил Михайлович Мизайлов-Михайловко</div>
-                        <div class="col-lg-5 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio15" autocomplete="off" checked>
-                                    <label class="btn btn btn-outline-light" for="btnradio15">Читатель</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio25" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio25">Редактор</label>
-                                
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio35" autocomplete="off">
-                                    <label class="btn btn btn-outline-light" for="btnradio35">Админ</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-1 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
-                                <button type="button" class="btn btn-outline-danger">Удалить</button>
-                            </form>
-                        </div>
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
     </div>

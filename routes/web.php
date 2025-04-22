@@ -3,6 +3,9 @@
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Page;
+use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,7 +24,10 @@ Route::resource('page', PageController::class)
     ->except(['create', 'store', 'update', 'destroy']);
 
 Route::get('/admin', function () {
-    return view('admin');
+    if (! Gate::allows('admin')) {
+        abort(403);
+    }
+    return view('admin', ['users' => User::all()]);
 })->middleware(['auth', 'verified'])->name('admin');
 
 Route::middleware('auth')->group(function () {
