@@ -9,19 +9,25 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    if (! Gate::allows('privateview')) {
+        abort(403);
+    }
     return view('welcome', [
         'pages' => Page::all(),
         'rootpages' => Page::whereNull('parent_id')->get(),
         'currentpageid' => null,
     ]);
-});
+})->middleware(['auth', 'verified'])->name('/');
 
 Route::resource('page', PageController::class)
     ->only(['create', 'store', 'update', 'destroy'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified'])
+    ->middleware('can:create, page');
 
 Route::resource('page', PageController::class)
-    ->except(['create', 'store', 'update', 'destroy']);
+    ->except(['create', 'store', 'update', 'destroy'])
+    ->middleware(['auth', 'verified'])
+    ->middleware('can:view, page');
 
 Route::get('/admin', function () {
     if (! Gate::allows('admin')) {
