@@ -19,55 +19,59 @@
             <h2>Список пользователей</h2>
             <ul class="card text-white" style="backdrop-filter: blur(5px); background-color: rgb(0 0 0 / 50%); padding: 10px">
                 @foreach ($users as $user)
+                @if($user->id != 1)
                 <li class="list-group-item">
                     <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>{{ $loop->index + 1 }}. </span>{{ $user->name }}</div>
+                        <div class="col-lg-6 col-sm-12 mb-2 mt-2"><span>{{ $loop->index }}. </span>{{ $user->name }}</div>
                         <div class="col-lg-5 col-sm-12 mb-2 mt-2 text-end">  
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 @if (!is_null($user->role) && $user->role == 'reader')
-                                <form action="" class="btn btn-light" style="display: inline;">
-                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio11" autocomplete="off" checked>
-                                    <label for="btnradio11">Читатель</label>
+                                <form action="" style="display: inline;">
+                                    <button type="submit" class="btn btn-light me-1">Читатель</button>
                                 </form>
                                 @else
-                                <form action="" class="btn btn-outline-light" style="display: inline;">
-                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio11" autocomplete="off" checked>
-                                    <label for="btnradio11">Читатель</label>
+                                <form action="/role/reader/{{ $user->id }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-outline-light me-1">Читатель</button>
                                 </form>
                                 @endif
                             
                                 @if (!is_null($user->role) && $user->role == 'writer')
-                                <form action="" class="btn btn-light" style="display: inline;">
-                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio21" autocomplete="off">
-                                    <label for="btnradio21">Редактор</label>
+                                <form action="" style="display: inline;">
+                                    <button type="submit" class="btn btn-light me-1">Редактор</button>
                                 </form>
                                 @else
-                                <form action="" class="btn btn-outline-light" style="display: inline;">
-                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio21" autocomplete="off">
-                                    <label for="btnradio21">Редактор</label>
+                                <form action="/role/writer/{{ $user->id }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-outline-light me-1">Редактор</button>
                                 </form>
                                 @endif
                             
                                 @if (!is_null($user->role) && $user->role == 'admin')
-                                <form action="" class="btn btn-light" style="display: inline;">
-                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio31" autocomplete="off">
-                                    <label for="btnradio31">Админ</label>
+                                <form action="" style="display: inline;">
+                                    <button type="submit" class="btn btn-light me-1">Админ</button>
                                 </form>
                                 @else
-                                <form action="" class="btn btn-outline-light" style="display: inline;">
-                                    <input type="submit" class="btn-check" name="btnradio" id="btnradio31" autocomplete="off">
-                                    <label for="btnradio31">Админ</label>
+                                <form action="/role/adminrole/{{ $user->id }}" method="POST" style="display: inline;">
+                                @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-outline-light me-1">Админ</button>
                                 </form>
                                 @endif
                             </div>    
                         </div>
                         <div class="col-lg-1 col-sm-12 mb-2 mt-2 text-end">
-                            <form action="" style="display: inline;">
+                            <form action="/user/{{ $user->id }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
                                 <button type="submit" class="btn btn-outline-danger">Удалить</button>
                             </form>
                         </div>
                     </div>
                 </li>
+                @endif
                 @endforeach
             </ul>
         </div>
