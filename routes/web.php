@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     if (! Gate::allows('privateview')) {
-        abort(403);
+        return view('auth.wait');
     }
     return view('welcome', [
         'pages' => Page::all(),
