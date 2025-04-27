@@ -255,7 +255,7 @@
 
     <style> 
         body {
-            background-image: url('https://avatars.mds.yandex.net/get-mpic/4407413/img_id3120010206446289579.jpeg/orig');
+            background-image: url('/images/background_image.webp');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;

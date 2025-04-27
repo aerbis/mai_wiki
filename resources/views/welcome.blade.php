@@ -124,10 +124,11 @@
     <style> 
         body {
             /* background-image: url('https://i.pinimg.com/originals/df/98/7c/df987cfa14bb2ecde827f3c69ae82046.jpg'); */
-            background-image: url('https://avatars.mds.yandex.net/get-mpic/4407413/img_id3120010206446289579.jpeg/orig');
+            /* background-image: url('https://avatars.mds.yandex.net/get-mpic/4407413/img_id3120010206446289579.jpeg/orig'); */
             /* background-image: url('https://avatars.mds.yandex.net/get-mpic/1927699/img_id7536679459257715795.jpeg/orig'); */
             /* background-image: url('https://wallpaper.forfun.com/fetch/70/70c592d8a7a3630f4ad5f74e10ee7e1a.jpeg'); */
             /* background-image: url('https://i.pinimg.com/736x/1c/96/7f/1c967f2ab4ead5f0ce003930b5cb9326.jpg'); */
+            background-image: url('/images/background_image.webp');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
