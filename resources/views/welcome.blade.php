@@ -23,7 +23,7 @@
                 <h3 class="text-white">Домашняя страница</h3>
             </div>
             <div class="col-lg-3 col-sm-12 text-end">
-                @if(Auth::check())
+                @if(Auth::user()->role == 'admin' || Auth::user()->role == 'writer')
                 <form action="/page" method="POST" style="margin: 0; padding: 0; display: inline;">
                   @csrf
                   <input type="text" hidden name="title" value="Название статьи">

@@ -19,7 +19,7 @@ class PagePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Page $page): bool
+    public function view(User $user): bool
     {
         return !is_null($user->role);
     }
@@ -35,7 +35,7 @@ class PagePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Page $page): bool
+    public function update(User $user): bool
     {
         return $user->role == 'writer' ||  $user->role == 'admin';
     }
@@ -43,7 +43,7 @@ class PagePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Page $page): bool
+    public function delete(User $user): bool
     {
         return $user->role == 'writer' ||  $user->role == 'admin';
     }
@@ -51,7 +51,7 @@ class PagePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Page $page): bool
+    public function restore(User $user): bool
     {
         return $user->role == 'writer' ||  $user->role == 'admin';
     }
@@ -59,7 +59,7 @@ class PagePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Page $page): bool
+    public function forceDelete(User $user): bool
     {
         return $user->role == 'writer' ||  $user->role == 'admin';
     }

@@ -121,6 +121,7 @@
                         <input class="form-control" type="text" readonly placeholder="Введите текст" name="title" value="{{ $page->title }}" style="font-weight: bold; font-size: large;" aria-label=".form-control-lg example">
                     </div>
                     <div class="col-lg-2 col-sm-12 text-end">
+                        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'writer')
                         <form action="/page/{{ $page->id }}" method="POST" style="margin: 0; padding: 0; display: inline;">
                             @csrf
                             @method('DELETE')
@@ -131,7 +132,6 @@
                                 </svg>
                             </button>
                         </form>
-                        @if(Auth::check())
                         <form action="/page" method="POST" style="margin: 0; padding: 0; display: inline;">
                             @csrf
                             <input type="text" hidden name="title" value="Название статьи">
