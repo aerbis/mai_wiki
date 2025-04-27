@@ -118,7 +118,7 @@
 
                 <div id="viewlayout" class="row mb-2" style="display: flex;">
                     <div class="col-lg-10 col-sm-12 mb-2">
-                        <input class="form-control" type="text" readonly placeholder="Введите текст" name="title" value="{{ $page->title }}" style="font-weight: bold; font-size: large;" aria-label=".form-control-lg example">
+                        <h3 class="text-white">{{ $page->title }}</h3>
                     </div>
                     <div class="col-lg-2 col-sm-12 text-end">
                         @if(Auth::user()->role == 'admin' || Auth::user()->role == 'writer')
@@ -158,7 +158,7 @@
 
                 <div class="row">
                     <div class="col-lg-10">
-                        <div class="card text-white" style="backdrop-filter: blur(5px); background-color: rgb(0 0 0 / 50%); padding: 10px">
+                        <div id="view_text" class="card text-white" style="backdrop-filter: blur(5px); background-color: rgb(0 0 0 / 50%); padding: 10px">
                             {!! $page->text !!}
                         </div>
                         <textarea id="sample">{{ $page->text }}</textarea>
@@ -202,6 +202,7 @@
         editor.toolbar.hide()
 
         editor.setContents(text.value)
+        document.getElementById('suneditor_sample').style.display = 'none';
 
         function getText() {
             text.value = editor.getContents()
@@ -213,6 +214,8 @@
 
             editor.readOnly(false)
             editor.toolbar.show()
+            document.getElementById('suneditor_sample').style.display = 'block';
+            document.getElementById('view_text').style.display = 'none';
         }
 
         function setView() {
@@ -221,6 +224,8 @@
 
             editor.readOnly(true)
             editor.toolbar.hide()
+            document.getElementById('suneditor_sample').style.display = 'none';
+            document.getElementById('view_text').style.display = 'block';
         }
     </script>    
     @else
@@ -236,58 +241,6 @@
     </script>
     @endif
     
-    <!-- Include the Quill library -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script> --}}
-
-    <!-- Initialize Quill editor -->
-    {{-- @if (Auth::check())
-    <script>
-        const toolbarOptions = [
-            [{ 'header': [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike'],  
-            
-            [{ 'script': 'sub'}, { 'script': 'super' }],
-            [{ 'indent': '-1'}, { 'indent': '+1' }], 
-
-            [{ 'color': [] }, { 'background': [] }],
-
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-            [{ 'align': [] }],
-
-            ['blockquote', 'code-block'],
-            ['link', 'image', 'video', 'formula'],
-        ]
-
-        const quill = new Quill("#editor", {
-            modules: {
-                toolbar: toolbarOptions
-            },
-            theme: "snow",
-        })
-
-        const text = document.getElementById('text')
-
-        quill.setContents(JSON.parse(text.value))
-
-        function getText() {
-            text.value = JSON.stringify(quill.getContents())
-        }
-    </script>
-    @else
-    <script>
-        const quillReadOnly = new Quill("#editor", {
-            readOnly: true,
-            modules: {
-                toolbar: null
-            },
-            theme: "snow",
-        })
-        const textReadOnly = document.getElementById('text')
-
-        quillReadOnly.setContents(JSON.parse(textReadOnly.value))
-    </script>
-    @endif   --}}
-
     <style>
         html, body {
             height: 90%;
